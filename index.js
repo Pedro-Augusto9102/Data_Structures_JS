@@ -19,19 +19,111 @@ const printRecursive = (head) => {
     printRecursive(head.next)
 }
 
-const a = new Node('a')
-const b = new Node('b')
-const c = new Node('c')
-const d = new Node('d')
-const e = new Node('e')
+const linkedListValues = (head) => {
+    let current = head
+    let values = []
+    while (current !== null){
+        values.push(current.val)
+        current = current.next
+    }
+    return values
+}
+
+const linkedListValuesRecursive = (head) => {
+    let values = []
+    linkedListValuesRecursiveHelper(head, values)
+    return values
+}
+
+const linkedListValuesRecursiveHelper = (head, values) => {
+    if(head === null) return
+    values.push(head.val)
+    linkedListValuesRecursiveHelper(head.next, values)
+
+}
+
+const linkedListSum = (head) => {
+    let current = head
+    let sum = 0
+    while(current !== null){
+        sum = sum+current.val
+        current = current.next
+    }
+    return sum 
+}
+
+const linkedListSumRecursive = (head) => {
+    if(head === null) return 0
+    return head.val + linkedListSumRecursive(head.next)
+}
+
+const linkedListFind = (head, target) => {
+    let current = head
+    while (current !== null){
+        if(current.val === target) return true
+        current = current.next
+    }
+    return false
+}
+
+const linkedListFindRecursive = (head, target) => {
+    if(head === null) return false
+    if(head.val === target) return true
+    return linkedListFindRecursive(head.next, target)
+}
+
+const linkedListGetNodeValue = (head, index) => {
+    let current = head
+    let count = 0
+    while (current !== null){
+        if(count === index) return current.val
+        count += 1
+        current = current.next
+    }
+    return null
+}
+
+const linkedListGetNodeValueRecursive = (head, index) => {
+    if(head === null) return null
+    if(index === 0) return head.val
+    return linkedListGetNodeValueRecursive(head.next, index - 1)
+}
+
+const mergeList = (head1,head2) => {
+    let current = head1
+    let dummy = new Node(0)
+    while(current !== null) {
+        if(current.next === null){            
+            current.next = head2
+            dummy.next = head1
+            return print(dummy.next)
+        }
+        current = current.next
+    }
+}
+
+const a = new Node(1)
+const b = new Node(2)
+const c = new Node(3)
+const d = new Node('A')
+const e = new Node('B')
 
 a.next = b
 b.next = c
-c.next = d
+//c.next = d
 d.next = e
 
 // a -> b -> c -> d -> e -> NULL
 
-print(a)
-console.log("----------------------------")
-printRecursive(a)
+//print(a)
+//printRecursive(a)
+//console.log(linkedListValues(a))
+//console.log(linkedListValuesRecursive(a))
+//console.log(linkedListSum(a))
+//console.log(linkedListSumRecursive(a))
+//console.log(linkedListFind(a, 5))
+//console.log(linkedListFindRecursive(a, 2))
+//console.log(linkedListGetNodeValue(head, 1))
+//console.log(linkedListGetNodeValueRecursive(head, 1))
+
+mergeList(a,d)
