@@ -102,15 +102,35 @@ const mergeList = (head1,head2) => {
     }
 }
 
+const reverseList = (head) => {
+    let current = head 
+    let prev = null
+
+    while (current !== null){
+        const next = current.next
+        current.next = prev
+        prev = current 
+        current = next   
+    }
+    return print(prev)
+}
+
+const reverseListRecursive = (head, prev = null) => {
+    if(head === null) return prev
+    const next = head.next
+    head.next = prev
+    return reverseListRecursive(next, head)
+}
+
 const a = new Node(1)
 const b = new Node(2)
 const c = new Node(3)
-const d = new Node('A')
-const e = new Node('B')
+const d = new Node(4)
+const e = new Node(5)
 
 a.next = b
 b.next = c
-//c.next = d
+c.next = d
 d.next = e
 
 // a -> b -> c -> d -> e -> NULL
@@ -125,5 +145,7 @@ d.next = e
 //console.log(linkedListFindRecursive(a, 2))
 //console.log(linkedListGetNodeValue(head, 1))
 //console.log(linkedListGetNodeValueRecursive(head, 1))
-
-mergeList(a,d)
+//mergeList(a,d) *Must create new linked list*
+//reverseList(a)
+//const reverse = reverseListRecursive(a)
+//console.log(print(reverse))
