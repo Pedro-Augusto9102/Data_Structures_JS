@@ -122,6 +122,38 @@ const reverseListRecursive = (head, prev = null) => {
     return reverseListRecursive(next, head)
 }
 
+const zipperList = (head1, head2) => {
+    let tail = head1
+    let current1 = head1.next
+    let current2 = head2
+    let count = 0
+    while(current1 !== null && current2 !== null){
+        if(count % 2 === 0){
+            tail.next = current2
+            current2 = current2.next
+        }else{
+            tail.next = current1
+            current1 = current1.next
+        }
+        tail = tail.next
+        count += 1
+    }
+    if(current1 !== null) tail.next = current1
+    if(current2 !== null) tail.next = current2
+    return head1
+}
+
+const zipperListRecursive = (head1, head2) => {
+    if(head1 === null && head2 === null) return null
+    if(head1 === null) return head2
+    if(head2 === null) return head1
+    const next1 = head1.next
+    const next2 = head2.next
+    head1.next = head2
+    head2.next = zipperListRecursive(next1, next2)
+    return head1
+}
+
 const a = new Node(1)
 const b = new Node(2)
 const c = new Node(3)
@@ -130,7 +162,7 @@ const e = new Node(5)
 
 a.next = b
 b.next = c
-c.next = d
+//c.next = d
 d.next = e
 
 // a -> b -> c -> d -> e -> NULL
@@ -149,3 +181,5 @@ d.next = e
 //reverseList(a)
 //const reverse = reverseListRecursive(a)
 //console.log(print(reverse))
+//print(zipperList(a, d))
+//print(zipperListRecursive(a, d))
