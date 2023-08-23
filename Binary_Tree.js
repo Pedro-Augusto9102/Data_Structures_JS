@@ -52,6 +52,12 @@ const FindTarget = (root, target) => {
     return false
 }
 
+const FindTargetRecursive = (root, target) => {
+    if(root === null) return false
+    if(root.val === target) return true
+    return FindTargetRecursive(root.left, target) || FindTargetRecursive(root.right, target)
+}
+
 const a = new Node('a')
 const b = new Node('b')
 const c = new Node('c')
