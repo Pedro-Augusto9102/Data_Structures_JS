@@ -75,4 +75,4 @@ c.right = f
 
 //console.log(depthFirstValuesRecursive(a))
 //console.log(breadthFirstValues(a))
-console.log(FindTarget(a, 'a'))
+//console.log(FindTarget(a, 'a'))
