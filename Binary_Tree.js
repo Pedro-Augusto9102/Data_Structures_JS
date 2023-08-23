@@ -39,6 +39,19 @@ const breadthFirstValues = (root) => {
     return result
 }
 
+const FindTarget = (root, target) => {
+    if(root === null) return null
+    if(root.val === target) return true
+    const queue = [root]
+    while(queue.length > 0){
+        const current = queue.shift()
+        if(current.val === target) return true
+        if(current.left !== null) queue.push(current.left)
+        if(current.right !== null) queue.push(current.right)
+    }
+    return false
+}
+
 const a = new Node('a')
 const b = new Node('b')
 const c = new Node('c')
@@ -61,4 +74,5 @@ c.right = f
 */
 
 //console.log(depthFirstValuesRecursive(a))
-console.log(breadthFirstValues(a))
+//console.log(breadthFirstValues(a))
+console.log(FindTarget(a, 'a'))
