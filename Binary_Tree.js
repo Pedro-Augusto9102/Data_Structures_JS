@@ -26,6 +26,19 @@ const depthFirstValuesRecursive = (root) => {
     return [root.val, ...left, ...right]
 }
 
+const breadthFirstValues = (root) => {
+    if(root === null) return []
+    const queue = [root]
+    const result = []
+    while (queue.length > 0){
+        const current = queue.shift()
+        result.push(current.val)
+        if(current.left !== null) queue.push(current.left)
+        if(current.right !== null) queue.push(current.right)
+    }
+    return result
+}
+
 const a = new Node('a')
 const b = new Node('b')
 const c = new Node('c')
@@ -47,4 +60,5 @@ c.right = f
     d   e   f
 */
 
-console.log(depthFirstValuesRecursive(a))
+//console.log(depthFirstValuesRecursive(a))
+console.log(breadthFirstValues(a))
