@@ -59,7 +59,7 @@ const FindTargetRecursive = (root, target) => {
 }
 
 const treeSum = (root) => {
-    if (!root) return null
+    if (!root) return 0
     const queue = [root]
     let sum = 0
     while(queue.length > 0){
@@ -69,6 +69,11 @@ const treeSum = (root) => {
         if(current.right !== null) queue.push(current.right)
     }
     return sum
+}
+
+const treeSumRecursive = (root) => {
+    if(!root) return 0
+    return root.val + treeSumRecursive(root.left) + treeSumRecursive(root.right)
 }
 
 const a = new Node(3)
@@ -95,4 +100,5 @@ c.right = f
 //console.log(depthFirstValuesRecursive(a))
 //console.log(breadthFirstValues(a))
 //console.log(FindTarget(a, 'a'))
-console.log(treeSum(a))
+//console.log(treeSum(a))
+console.log(treeSumRecursive(a))
