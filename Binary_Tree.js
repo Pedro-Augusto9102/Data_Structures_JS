@@ -58,12 +58,25 @@ const FindTargetRecursive = (root, target) => {
     return FindTargetRecursive(root.left, target) || FindTargetRecursive(root.right, target)
 }
 
-const a = new Node('a')
-const b = new Node('b')
-const c = new Node('c')
-const d = new Node('d')
-const e = new Node('e')
-const f = new Node('f')
+const treeSum = (root) => {
+    if (!root) return null
+    const queue = [root]
+    let sum = 0
+    while(queue.length > 0){
+        const current = queue.shift()
+        sum += current.val
+        if(current.left !== null) queue.push(current.left)
+        if(current.right !== null) queue.push(current.right)
+    }
+    return sum
+}
+
+const a = new Node(3)
+const b = new Node(11)
+const c = new Node(4)
+const d = new Node(2)
+const e = new Node(4)
+const f = new Node(1)
 
 a.left = b
 a.right = c
@@ -82,3 +95,4 @@ c.right = f
 //console.log(depthFirstValuesRecursive(a))
 //console.log(breadthFirstValues(a))
 //console.log(FindTarget(a, 'a'))
+console.log(treeSum(a))
