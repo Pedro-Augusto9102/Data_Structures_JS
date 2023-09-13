@@ -97,8 +97,8 @@ c.right = f
     d   e   f
 */
 
-//console.log(depthFirstValuesRecursive(a))
-//console.log(breadthFirstValues(a))
-//console.log(FindTarget(a, 'a'))
-//console.log(treeSum(a))
+console.log(depthFirstValuesRecursive(a))
+console.log(breadthFirstValues(a))
+console.log(FindTarget(a, 'a'))
+console.log(treeSum(a))
 console.log(treeSumRecursive(a))
